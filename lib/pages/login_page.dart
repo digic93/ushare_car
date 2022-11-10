@@ -183,7 +183,7 @@ class _LoginScreenState extends State<LoginPage> {
                         ),
                       ),
                       Text(
-                        'UCar App',
+                        'Ushare Car App',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'OpenSans',
