@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final appName = 'UCar App';
+final appName = 'Ushare App';
 
 final kHintTextStyle = TextStyle(
   color: Colors.white54,

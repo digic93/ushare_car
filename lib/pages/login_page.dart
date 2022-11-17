@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:provider/provider.dart';
 import '../utilities/constants.dart';
 
 class LoginPage extends StatefulWidget {
@@ -124,8 +124,10 @@ class _LoginScreenState extends State<LoginPage> {
   }
 
   Widget _buildSignupBtn() {
-    return GestureDetector(
-      onTap: () => print('Sign Up Button Pressed'),
+    return Container(
+      alignment: Alignment.centerRight,
+      child: FlatButton(
+        onPressed: () => Navigator.pushNamed(context, 'registro'),
       child: RichText(
         text: TextSpan(
           children: [
@@ -137,6 +139,7 @@ class _LoginScreenState extends State<LoginPage> {
                 fontWeight: FontWeight.w400,
               ),
             ),
+            
             TextSpan(
               text: 'Registrate!',
               style: TextStyle(
@@ -144,15 +147,20 @@ class _LoginScreenState extends State<LoginPage> {
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
               ),
+              
+              
             ),
           ],
         ),
       ),
+    )
+    
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -183,7 +191,7 @@ class _LoginScreenState extends State<LoginPage> {
                         ),
                       ),
                       Text(
-                        'UCar App',
+                        'Ushare App',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'OpenSans',
@@ -211,3 +219,4 @@ class _LoginScreenState extends State<LoginPage> {
     );
   }
 }
+
