@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_final/pages/home_page.dart';
 import 'package:proyecto_final/pages/login_page.dart';
 import 'package:proyecto_final/pages/registrar_page.dart';
 
@@ -9,15 +10,14 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  // Samira no se tire mi app.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.grey),
       initialRoute: 'login',
       debugShowCheckedModeBanner: false,
-      routes: {'login': (_) => LoginPage(),
-      'registro' : (_)=> RegistrarPage()},
+      routes: {'login': (_) => LoginPage(), 'registro' : (_)=> RegistrarPage(), 'home': (_) => HomePage()},
     );
   }
 }

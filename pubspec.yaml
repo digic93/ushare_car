@@ -38,6 +38,8 @@ dependencies:
   provider: ^5.0.0
   http: ^0.13.3
   flutter_secure_storage: ^5.0.2
+  flutter_placeholder_textlines: ^1.2.0
+
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +51,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  floating_pullup_card: ^1.2.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
