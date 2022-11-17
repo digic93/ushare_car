@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto_final/pages/home_page.dart';
 import 'package:proyecto_final/pages/login_page.dart';
+import 'package:proyecto_final/pages/registrar_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.grey),
       initialRoute: 'login',
       debugShowCheckedModeBanner: false,
-      routes: {'login': (_) => LoginPage(), 'home': (_) => HomePage()},
+      routes: {'login': (_) => LoginPage(), 'registro' : (_)=> RegistrarPage(), 'home': (_) => HomePage()},
     );
   }
 }
