@@ -9,16 +9,18 @@ class RegistrarPage extends StatefulWidget {
 }
 
 class _RegistrarScreenState extends State<RegistrarPage> {
+  bool _iamDriver = false;
+
   bool _rememberMe = false;
 
   Widget _buildNombresTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          'Nombres',
-          style: kLabelStyle,
-        ),
+        // Text(
+        //   'Nombres',
+        //   style: kLabelStyle,
+        // ),
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
@@ -50,10 +52,10 @@ class _RegistrarScreenState extends State<RegistrarPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          'Apellidos',
-          style: kLabelStyle,
-        ),
+        // Text(
+        //   'Apellidos',
+        //   style: kLabelStyle,
+        // ),
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
@@ -85,10 +87,10 @@ class _RegistrarScreenState extends State<RegistrarPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          'Telefono',
-          style: kLabelStyle,
-        ),
+        // Text(
+        //   'Telefono',
+        //   style: kLabelStyle,
+        // ),
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
@@ -120,10 +122,10 @@ class _RegistrarScreenState extends State<RegistrarPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          'Cedula',
-          style: kLabelStyle,
-        ),
+        // Text(
+        //   'Cedula',
+        //   style: kLabelStyle,
+        // ),
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
@@ -155,10 +157,10 @@ class _RegistrarScreenState extends State<RegistrarPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          'Carrera',
-          style: kLabelStyle,
-        ),
+        // Text(
+        //   'Carrera',
+        //   style: kLabelStyle,
+        // ),
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
@@ -186,49 +188,14 @@ class _RegistrarScreenState extends State<RegistrarPage> {
     );
   }
 
-  Widget _buildNacionalidadTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Nacionalidad',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextField(
-            keyboardType: TextInputType.text,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.not_listed_location_outlined,
-                color: Colors.white,
-              ),
-              hintText: '¿De donde es?',
-              hintStyle: kHintTextStyle,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
   Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          'Correo',
-          style: kLabelStyle,
-        ),
+        // Text(
+        //   'Correo',
+        //   style: kLabelStyle,
+        // ),
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
@@ -260,10 +227,10 @@ class _RegistrarScreenState extends State<RegistrarPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-          'Contraseña',
-          style: kLabelStyle,
-        ),
+        // Text(
+        //   'Contraseña',
+        //   style: kLabelStyle,
+        // ),
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
@@ -319,6 +286,165 @@ class _RegistrarScreenState extends State<RegistrarPage> {
     );
   }
 
+  Widget _buildIamDriverTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Container(
+            alignment: Alignment.centerLeft,
+            height: 60.0,
+            child: Column(children: <Widget>[
+              // Icon(
+              //   Icons.drive_eta,
+              //   color: Colors.white,
+              // ),
+              LabeledCheckbox(
+                label: "Soy conductor:",
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                value: _iamDriver,
+                onChanged: (bool newValue) {
+                  setState(() {
+                    _iamDriver = newValue;
+                  });
+                },
+              )
+            ])),
+      ],
+    );
+  }
+
+  Widget _buildVehicleLicenceTF() {
+    return Visibility(
+        visible: _iamDriver,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(height: 10.0),
+            Container(
+              alignment: Alignment.centerLeft,
+              decoration: kBoxDecorationStyle,
+              height: 60.0,
+              child: TextField(
+                keyboardType: TextInputType.phone,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'OpenSans',
+                ),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.only(top: 14.0),
+                  prefixIcon: Icon(
+                    Icons.drive_eta,
+                    color: Colors.white,
+                  ),
+                  hintText: 'Ingrese las placas del vehiculo',
+                  hintStyle: kHintTextStyle,
+                ),
+              ),
+            ),
+          ],
+        ));
+  }
+
+  Widget _buildVehicleColorTF() {
+    return Visibility(
+        visible: _iamDriver,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(height: 10.0),
+            Container(
+              alignment: Alignment.centerLeft,
+              decoration: kBoxDecorationStyle,
+              height: 60.0,
+              child: TextField(
+                keyboardType: TextInputType.phone,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'OpenSans',
+                ),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.only(top: 14.0),
+                  prefixIcon: Icon(
+                    Icons.drive_eta,
+                    color: Colors.white,
+                  ),
+                  hintText: 'Ingrese color del Vehiculo',
+                  hintStyle: kHintTextStyle,
+                ),
+              ),
+            ),
+          ],
+        ));
+  }
+
+  Widget? _buildVehicleModelTF() {
+    return Visibility(
+        visible: _iamDriver,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(height: 10.0),
+            Container(
+              alignment: Alignment.centerLeft,
+              decoration: kBoxDecorationStyle,
+              height: 60.0,
+              child: TextField(
+                keyboardType: TextInputType.phone,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'OpenSans',
+                ),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.only(top: 14.0),
+                  prefixIcon: Icon(
+                    Icons.drive_eta,
+                    color: Colors.white,
+                  ),
+                  hintText: 'Ingrese el modelo del Vehiculo',
+                  hintStyle: kHintTextStyle,
+                ),
+              ),
+            ),
+          ],
+        ));
+  }
+
+  Widget _buildVehicleBrandTF() {
+    return Visibility(
+        visible: _iamDriver,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(height: 10.0),
+            Container(
+              alignment: Alignment.centerLeft,
+              decoration: kBoxDecorationStyle,
+              height: 60.0,
+              child: TextField(
+                keyboardType: TextInputType.phone,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'OpenSans',
+                ),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.only(top: 14.0),
+                  prefixIcon: Icon(
+                    Icons.drive_eta,
+                    color: Colors.white,
+                  ),
+                  hintText: 'Ingrese marca del Vehiculo',
+                  hintStyle: kHintTextStyle,
+                ),
+              ),
+            ),
+          ],
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -342,7 +468,6 @@ class _RegistrarScreenState extends State<RegistrarPage> {
                     vertical: 60.0,
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
                         child: Image.asset(
@@ -359,31 +484,48 @@ class _RegistrarScreenState extends State<RegistrarPage> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 30.0),
+                      Text(
+                        'Datos de usuario',
+                        style: kLabelStyle,
+                      ),
+                      SizedBox(height: 5.0),
                       _buildNombresTF(),
-                      SizedBox(height: 30.0),
+                      SizedBox(height: 5.0),
                       _buildApellidosTF(),
-                      SizedBox(height: 30.0),
+                      SizedBox(height: 5.0),
                       _buildCedulaTF(),
-                      SizedBox(height: 30.0),
+                      SizedBox(height: 5.0),
                       _buildTelefonoTF(),
-                      SizedBox(height: 30.0),
+                      SizedBox(height: 5.0),
                       _buildCarreraTF(),
-                      SizedBox(height: 30.0),
-                      _buildNacionalidadTF(),
-                      SizedBox(height: 30.0),
+                      SizedBox(height: 5.0),
                       _buildEmailTF(),
-                      SizedBox(
-                        height: 30.0,
-                      ),
+                      SizedBox(height: 5.0),
                       _buildPasswordTF(),
-                      SizedBox(
-                        height: 30.0,
+                      SizedBox(height: 5.0),
+                      _buildIamDriverTF(),
+                      SizedBox(height: 5.0),
+                      Visibility(
+                        visible: _iamDriver,
+                        child: new Divider(color: Colors.white),
                       ),
+                      ////////////////////////////
+                      Visibility(
+                        visible: _iamDriver,
+                        child: Text(
+                          'Datos del Vehiculo',
+                          style: kLabelStyle,
+                        ),
+                      ),
+                      _buildVehicleBrandTF(),
+                      // SizedBox(height: 5.0),
+                      _buildVehicleLicenceTF(),
+                      // SizedBox(height: 5.0),
+                      _buildVehicleColorTF(),
+                      // SizedBox(height: 5.0),
+                      _buildVehicleModelTF()!,
+                      SizedBox(height: 5.0),
                       _buildLoginBtn(),
-                      SizedBox(
-                        height: 30.0,
-                      ),
                     ],
                   ),
                 ),
@@ -420,7 +562,11 @@ class LabeledCheckbox extends StatelessWidget {
         padding: padding,
         child: Row(
           children: <Widget>[
-            Expanded(child: Text(label)),
+            Expanded(
+                child: Text(
+              label,
+              style: kLabelStyle,
+            )),
             Checkbox(
               value: value,
               onChanged: (bool? newValue) {
@@ -447,7 +593,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return LabeledCheckbox(
-      label: 'Soy Conductor',
+      label: 'Soy Conductor:',
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       value: _isSelected,
       onChanged: (bool newValue) {

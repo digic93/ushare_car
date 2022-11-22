@@ -73,7 +73,7 @@ class RouteInfoWidget extends StatelessWidget {
                   size: 20,
                 ),
                 Text(
-                  "ruta: ",
+                  "Ruta: ",
                   style: TextStyle(color: Color.fromARGB(255, 86, 86, 86)),
                 ),
                 Text(
