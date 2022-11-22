@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_final/pages/find_route_page.dart';
 import 'package:proyecto_final/pages/home_page.dart';
 import 'package:proyecto_final/pages/login_page.dart';
 import 'package:proyecto_final/pages/registrar_page.dart';
@@ -17,7 +18,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.grey),
       initialRoute: 'login',
       debugShowCheckedModeBanner: false,
-      routes: {'login': (_) => LoginPage(), 'registro' : (_)=> RegistrarPage(), 'home': (_) => HomePage()},
+      routes: {
+        'login': (_) => LoginPage(),
+        'registro': (_) => RegistrarPage(),
+        'home': (_) => HomePage(),
+        'findroute': (_) => FindRoutePage()
+      },
     );
   }
 }

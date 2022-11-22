@@ -31,18 +31,18 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.search, color: Color(0xFF004C1A)),
             title: Text('Buscar Rutas'),
-            onTap: () => {},
+            onTap: () => Navigator.pushNamed(context, 'findroute'),
           ),
           ListTile(
             leading: Icon(Icons.list, color: Color(0xFF004C1A)),
             title: Text('Hitorial de viajes'),
             onTap: () => {},
           ),
-          ListTile(
-            leading: Icon(Icons.verified_user, color: Color(0xFF004C1A)),
-            title: Text('Perfil'),
-            onTap: () => {},
-          ),
+          // ListTile(
+          //   leading: Icon(Icons.verified_user, color: Color(0xFF004C1A)),
+          //   title: Text('Perfil'),
+          //   onTap: () => {},
+          // ),
           ListTile(
             leading: Icon(Icons.settings, color: Color(0xFF004C1A)),
             title: Text('Configuración'),
@@ -50,8 +50,8 @@ class NavDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app, color: Color(0xFF004C1A)),
+            onTap: () => Navigator.pushNamed(context, 'login'),
             title: Text('Cerrar sesión'),
-            onTap: () => {Navigator.of(context).pop()},
           ),
         ],
       ),

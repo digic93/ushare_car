@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../utilities/constants.dart';
 
-
 class RegistrarPage extends StatefulWidget {
   @override
   _RegistrarScreenState createState() => _RegistrarScreenState();
@@ -47,7 +46,7 @@ class _RegistrarScreenState extends State<RegistrarPage> {
     );
   }
 
-Widget _buildApellidosTF() {
+  Widget _buildApellidosTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -69,15 +68,19 @@ Widget _buildApellidosTF() {
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
-              
               hintText: 'Ingrese su apellido',
               hintStyle: kHintTextStyle,
+              prefixIcon: Icon(
+                Icons.person_add_alt_1_outlined,
+                color: Colors.white,
+              ),
             ),
           ),
         ),
       ],
     );
   }
+
   Widget _buildTelefonoTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,6 +115,7 @@ Widget _buildApellidosTF() {
       ],
     );
   }
+
   Widget _buildCedulaTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,6 +150,7 @@ Widget _buildApellidosTF() {
       ],
     );
   }
+
   Widget _buildCarreraTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,6 +185,7 @@ Widget _buildApellidosTF() {
       ],
     );
   }
+
   Widget _buildNacionalidadTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -284,7 +290,7 @@ Widget _buildApellidosTF() {
       ],
     );
   }
-  
+
   Widget _buildLoginBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
@@ -312,9 +318,9 @@ Widget _buildApellidosTF() {
       ),
     );
   }
-   @override
+
+  @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -371,12 +377,13 @@ Widget _buildApellidosTF() {
                         height: 30.0,
                       ),
                       _buildPasswordTF(),
-                       SizedBox(
-                        height: 30.0,),
+                      SizedBox(
+                        height: 30.0,
+                      ),
                       _buildLoginBtn(),
                       SizedBox(
-                        height: 30.0,),
-                                            
+                        height: 30.0,
+                      ),
                     ],
                   ),
                 ),
@@ -451,4 +458,3 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 }
-
