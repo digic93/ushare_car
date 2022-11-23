@@ -5,6 +5,7 @@ class UserModel {
   String lasName;
   String email;
   String collegeDegree;
+  bool isDriver;
   String? url_photo;
 
   UserModel(
@@ -14,5 +15,6 @@ class UserModel {
       required this.lasName,
       required this.email,
       required this.collegeDegree,
+      required this.isDriver,
       this.url_photo});
 }

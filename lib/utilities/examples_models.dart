@@ -11,6 +11,7 @@ final userArmando = UserModel(
     lasName: "Torres Rojas",
     email: "atorresr@ucentral.edu.co",
     collegeDegree: "Ingenieria Ambiental",
+    isDriver: false,
     url_photo: "https://rickandmortyapi.com/api/character/avatar/363.jpeg");
 
 final vehicleArmando = Vehicle(

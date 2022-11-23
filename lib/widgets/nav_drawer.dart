@@ -29,6 +29,11 @@ class NavDrawer extends StatelessWidget {
             onTap: () => {},
           ),
           ListTile(
+            leading: Icon(Icons.plus_one, color: Color(0xFF004C1A)),
+            title: Text('Crear Ruta'),
+            onTap: () => {Navigator.pushNamed(context, 'createroute')},
+          ),
+          ListTile(
             leading: Icon(Icons.search, color: Color(0xFF004C1A)),
             title: Text('Buscar Rutas'),
             onTap: () => Navigator.pushNamed(context, 'findroute'),

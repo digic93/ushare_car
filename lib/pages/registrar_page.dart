@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import '../models/user_model.dart';
 import '../utilities/constants.dart';
 
 class RegistrarPage extends StatefulWidget {
@@ -10,10 +11,24 @@ class RegistrarPage extends StatefulWidget {
 
 class _RegistrarScreenState extends State<RegistrarPage> {
   bool _iamDriver = false;
-
   bool _rememberMe = false;
 
   Widget _buildNombresTF() {
+    // return TextFormField(
+    //   initialValue: user.fistName,
+    //   onChanged: (value) => {user.fistName = value},
+    //   validator: (value) {
+    //     if (value!.isEmpty) {
+    //       return 'Por favor ingrese nobre de usuario';
+    //     }
+    //     return null;
+    //   },
+    //   decoration: const InputDecoration(
+    //                 icon: const Icon(Icons.person),
+    //                 hintText: 'Alvaro',
+    //                 labelText: 'Nombre Usuario',
+    //               ),
+    // );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -379,7 +394,7 @@ class _RegistrarScreenState extends State<RegistrarPage> {
         ));
   }
 
-  Widget? _buildVehicleModelTF() {
+  Widget _buildVehicleModelTF() {
     return Visibility(
         visible: _iamDriver,
         child: Column(
@@ -447,6 +462,9 @@ class _RegistrarScreenState extends State<RegistrarPage> {
 
   @override
   Widget build(BuildContext context) {
+    // final userForm = Provider.of<UserFormProvider>(context);
+    // final user = userForm.user;
+
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -489,21 +507,29 @@ class _RegistrarScreenState extends State<RegistrarPage> {
                         style: kLabelStyle,
                       ),
                       SizedBox(height: 5.0),
-                      _buildNombresTF(),
-                      SizedBox(height: 5.0),
-                      _buildApellidosTF(),
-                      SizedBox(height: 5.0),
-                      _buildCedulaTF(),
-                      SizedBox(height: 5.0),
-                      _buildTelefonoTF(),
-                      SizedBox(height: 5.0),
-                      _buildCarreraTF(),
-                      SizedBox(height: 5.0),
-                      _buildEmailTF(),
-                      SizedBox(height: 5.0),
-                      _buildPasswordTF(),
-                      SizedBox(height: 5.0),
-                      _buildIamDriverTF(),
+                      Form(
+                          // key: userForm.formkey,
+                          // autovalidateMode: AutovalidateMode.onUserInteraction,
+                          child: Column(
+                        children: [
+                          _buildNombresTF(),
+                          SizedBox(height: 5.0),
+                          _buildApellidosTF(),
+                          SizedBox(height: 5.0),
+                          _buildCedulaTF(),
+                          SizedBox(height: 5.0),
+                          _buildTelefonoTF(),
+                          SizedBox(height: 5.0),
+                          _buildCarreraTF(),
+                          SizedBox(height: 5.0),
+                          _buildEmailTF(),
+                          SizedBox(height: 5.0),
+                          _buildPasswordTF(),
+                          SizedBox(height: 5.0),
+                          _buildIamDriverTF(),
+                        ],
+                      )),
+
                       SizedBox(height: 5.0),
                       Visibility(
                         visible: _iamDriver,
@@ -523,7 +549,7 @@ class _RegistrarScreenState extends State<RegistrarPage> {
                       // SizedBox(height: 5.0),
                       _buildVehicleColorTF(),
                       // SizedBox(height: 5.0),
-                      _buildVehicleModelTF()!,
+                      _buildVehicleModelTF(),
                       SizedBox(height: 5.0),
                       _buildLoginBtn(),
                     ],
