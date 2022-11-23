@@ -2,14 +2,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:floating_pullup_card/floating_pullup_card.dart';
 import 'package:flutter_placeholder_textlines/flutter_placeholder_textlines.dart';
+import 'package:proyecto_final/models/route_model.dart';
+import 'package:proyecto_final/utilities/examples_models.dart';
 import 'package:proyecto_final/widgets/route_info.dart';
 
 import '../utilities/constants.dart';
 import '../widgets/nav_drawer.dart';
 
 class FindRoutePage extends StatelessWidget {
+  List<Widget> _routesWigets = [];
+
   @override
   Widget build(BuildContext context) {
+    routesList.forEach((route) {
+      this._routesWigets.add(RouteInfoWidget(
+            route: route,
+            resume: true,
+          ));
+    });
+
     return Scaffold(
         drawer: NavDrawer(),
         appBar: AppBar(
@@ -36,6 +47,9 @@ class FindRoutePage extends StatelessWidget {
                       decoration: simpleDecorationStyle,
                       height: 60.0,
                       child: TextField(
+                        onChanged: ((value) {
+                          _getroutebySearch(value);
+                        }),
                         keyboardType: TextInputType.text,
                         style: TextStyle(
                           color: Colors.black,
@@ -48,7 +62,7 @@ class FindRoutePage extends StatelessWidget {
                             Icons.search,
                             color: Colors.grey,
                           ),
-                          hintText: 'Busca una ruta por avenida o barrio',
+                          hintText: 'Busca una ruta por avenida',
                           hintStyle: simpleTextStyle,
                         ),
                       ),
@@ -61,19 +75,30 @@ class FindRoutePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                     child: SingleChildScrollView(
                       child: Column(
-                        children: [
-                          RouteInfoWidget(
-                            resume: false,
-                          ),
-                          RouteInfoWidget(resume: true),
-                          RouteInfoWidget(resume: true),
-                          RouteInfoWidget(resume: true),
-                        ],
+                        children: this._routesWigets,
                       ),
                     )),
               ],
             ),
           ),
         ))));
+  }
+
+  void _getroutebySearch(String desroute) {
+    List<RouteModel> routes = routesList;
+    this._routesWigets.clear();
+
+    // routes.forEach((routeInstance) {
+    //   for (var i = 0; i >= 0 && i < routeInstance.route!.length; i++) {
+    //     String descAv = routeInstance.route![i].toUpperCase();
+    //     if (descAv.contains(desroute.toUpperCase())) {
+    //       this._routesWigets.add(RouteInfoWidget(
+    //         route: routeInstance,
+    //         resume: true,
+    //       ));
+    //       i = -1;
+    //     }
+    //   }
+    // });
   }
 }

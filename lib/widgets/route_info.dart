@@ -5,8 +5,10 @@ import 'package:proyecto_final/utilities/examples_models.dart';
 
 class RouteInfoWidget extends StatelessWidget {
   bool resume;
+  RouteModel route;
 
-  RouteInfoWidget({Key? key, required this.resume}) : super(key: key);
+  RouteInfoWidget({Key? key, required this.resume, required this.route})
+      : super(key: key);
 
   Widget _routeInfoWidget(RouteModel route, BuildContext context) {
     return Padding(
@@ -275,7 +277,7 @@ class RouteInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RouteModel _route = routeArmando;
+    RouteModel _route = this.route;
     Vehicle? _vehicle = _route.vehicle;
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
