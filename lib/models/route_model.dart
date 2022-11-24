@@ -24,4 +24,30 @@ class RouteModel {
       this.driverNote,
       this.startPoint,
       this.vehicle});
+
+      factory RouteModel.fromMap(Map<String, dynamic> json)=> RouteModel(
+  userId: json["userId"],
+  user: json["user"],
+  destinationNeighborhood: json["destinationNeighborhood"],
+  departureTime: json["departureTime"],
+  availableDays: json["availableDays"],
+  route: json["route"],
+  driverNote: json["driverNote"],
+  startPoint: json["startPoint"],
+
+ 
+  
+);
+Map<String,dynamic> toMap()=>{
+  "userId":userId,
+  "user":user,
+  "destinationNeighborhood": destinationNeighborhood,
+  "departureTime":departureTime,
+  "availableDays": availableDays,
+  "route": route,
+  "driverNote": driverNote,
+  "startPoint": startPoint,
+
+};
 }
+

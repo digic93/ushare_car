@@ -10,7 +10,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginPage> {
   bool _rememberMe = false;
-
+  late String correo;
+  late String passgord; 
   Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,6 +26,7 @@ class _LoginScreenState extends State<LoginPage> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
+            onChanged: (value) => correo,
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
               color: Colors.white,
@@ -58,8 +60,10 @@ class _LoginScreenState extends State<LoginPage> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: kBoxDecorationStyle,
+
           height: 60.0,
           child: TextField(
+            onChanged: (value) => passgord,
             obscureText: true,
             style: TextStyle(
               color: Colors.white,
@@ -127,7 +131,14 @@ class _LoginScreenState extends State<LoginPage> {
     return Container(
       alignment: Alignment.centerRight,
       child: FlatButton(
-        onPressed: () => Navigator.pushNamed(context, 'registro'),
+        onPressed: () => {
+          if (correo != "" && passgord != ""){
+            Navigator.pushNamed(context, 'registro')
+          }else{
+             Scaffold.of(context).showSnackBar(
+                        SnackBar(content: Text('Correo o contraseña novalido')))
+          }
+        } ,
       child: RichText(
         text: TextSpan(
           children: [

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:floating_pullup_card/floating_pullup_card.dart';
+import 'package:proyecto_final/utilities/examples_models.dart';
 import 'package:proyecto_final/widgets/route_info.dart';
 
 import '../widgets/nav_drawer.dart';
@@ -35,7 +36,8 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Center(child: RouteInfoWidget(resume: false))
+                Center(
+                    child: RouteInfoWidget(route: routeArmando, resume: false))
                 // PlaceholderLines(
                 //   count: 20,
                 //   align: TextAlign.center,
