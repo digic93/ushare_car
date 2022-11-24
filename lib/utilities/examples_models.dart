@@ -10,6 +10,7 @@ final userArmando = UserModel(
     fistName: "Armando",
     lasName: "Torres Rojas",
     email: "atorresr@ucentral.edu.co",
+    password: "12345678",
     collegeDegree: "Ingenieria Ambiental",
     url_photo: "https://rickandmortyapi.com/api/character/avatar/363.jpeg");
 

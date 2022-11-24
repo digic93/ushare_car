@@ -219,4 +219,3 @@ class _LoginScreenState extends State<LoginPage> {
     );
   }
 }
-

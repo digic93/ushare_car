@@ -4,6 +4,7 @@ class UserModel {
   String fistName;
   String lasName;
   String email;
+  String password;
   String collegeDegree;
   String? url_photo;
 
@@ -13,6 +14,7 @@ class UserModel {
       required this.fistName,
       required this.lasName,
       required this.email,
+      required this.password,
       required this.collegeDegree,
       this.url_photo});
 }
