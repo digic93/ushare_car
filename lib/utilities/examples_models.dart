@@ -70,9 +70,9 @@ final routeSamira = RouteModel(
     driverNote: "Disponible Solo dias impares por pico y placa!");
 // routePlaces
 
-List<RouteModel> routesList = [
-  routeArmando,
-  routeDiego,
-  routeDavid,
-  routeSamira,
-];
+// List<RouteModel> routesList = [
+//   routeArmando,
+//   routeDiego,
+//   routeDavid,
+//   routeSamira,
+// ];

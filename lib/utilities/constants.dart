@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 final appName = 'Ushare App';
-final baseUrl = "";
+final baseUrl = "evaluation-9533a-default-rtdb.firebaseio.com";
 
 final kHintTextStyle = TextStyle(
   color: Colors.white54,

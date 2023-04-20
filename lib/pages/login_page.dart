@@ -10,8 +10,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginPage> {
   bool _rememberMe = false;
-  late String correo;
-  late String passgord; 
+  late String correo = "";
+  late String passgord = ""; 
   Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +26,10 @@ class _LoginScreenState extends State<LoginPage> {
           decoration: kBoxDecorationStyle,
           height: 60.0,
           child: TextField(
-            onChanged: (value) => correo,
+            onChanged: (value) => {
+              correo= value
+            },
+
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
               color: Colors.white,
@@ -63,7 +66,7 @@ class _LoginScreenState extends State<LoginPage> {
 
           height: 60.0,
           child: TextField(
-            onChanged: (value) => passgord,
+            onChanged: (value) => {passgord=value},
             obscureText: true,
             style: TextStyle(
               color: Colors.white,
@@ -89,7 +92,9 @@ class _LoginScreenState extends State<LoginPage> {
     return Container(
       alignment: Alignment.centerRight,
       child: FlatButton(
-        onPressed: () => print('Olvido su contraseña'),
+        onPressed: () => {
+          print('Olvido su contraseña'),
+        },
         padding: EdgeInsets.only(right: 0.0),
         child: Text(
           'Olvido su contraseña?',
@@ -99,14 +104,19 @@ class _LoginScreenState extends State<LoginPage> {
     );
   }
 
-  Widget _buildLoginBtn() {
+  Widget _buildLoginBtn(context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () {
-          Navigator.pushNamed(context, 'home');
+          if (correo != "" && passgord != ""){
+            Navigator.pushNamed(context, 'home');
+          }else{
+             Scaffold.of(context).showSnackBar(
+                        SnackBar(content: Text('Correo o contraseña novalido')));
+          }
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
@@ -132,12 +142,8 @@ class _LoginScreenState extends State<LoginPage> {
       alignment: Alignment.centerRight,
       child: FlatButton(
         onPressed: () => {
-          if (correo != "" && passgord != ""){
-            Navigator.pushNamed(context, 'registro')
-          }else{
-             Scaffold.of(context).showSnackBar(
-                        SnackBar(content: Text('Correo o contraseña novalido')))
-          }
+                      Navigator.pushNamed(context, 'registro')
+
         } ,
       child: RichText(
         text: TextSpan(
@@ -217,7 +223,7 @@ class _LoginScreenState extends State<LoginPage> {
                       ),
                       _buildPasswordTF(),
                       _buildForgotPasswordBtn(),
-                      _buildLoginBtn(),
+                      _buildLoginBtn(context),
                       _buildSignupBtn(),
                     ],
                   ),

@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:developer';
+import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 import 'package:proyecto_final/models/route_model.dart';
@@ -6,31 +8,32 @@ import 'package:http/http.dart' as http;
 import '../utilities/constants.dart';
 
 class RouteService extends ChangeNotifier {
-  final String _baseUrl = "https://carro-app-b2401-default-rtdb.firebaseio.com/Routes";
-  final List<RouteModel> RouteModels= [];
-  bool chargeUser = false;
+  final String _baseUrl = baseUrl;
+  bool chargeRoute = false;
   late RouteModel route;
+  late final List<RouteModel> routes = [];
 
-  RouteService(){
-    loadRoutes();
+  RouteService() {
+    loadRouts();
   }
-  Future <List<RouteModel>> loadRoutes() async{
-    
-    notifyListeners();
-    final url = Uri.https(_baseUrl, 'contactos.json');
-    final respuesta = await http.get(url);
-    print("::::::::::::::::::::::::::::::::::::::::::");
-    print(respuesta.body);
-    print("::::::::::::::::::::::::::::::::::::::::::");
-     final Map<String,dynamic>RouteServiceMap = json.decode(respuesta.body);
-     
 
+  Future<List<RouteModel>> loadRouts() async {
+    chargeRoute = true;
 
-    RouteServiceMap.forEach((key,value) { 
-      final RouteServiceTemp= RouteModel.fromMap(value);
-      RouteModels.add(RouteServiceTemp);
+    final url = Uri.https(_baseUrl, 'routes.json');
+    final response = await http.get(url);
+    final body = response.body.replaceAll("null,", "");
+    final List<dynamic> routesMap = json.decode(body);
+
+    routesMap.forEach((contactObj) {
+      final routeTemp = RouteModel.fromMap(contactObj);
+
+      routes.add(routeTemp);
     });
+
     notifyListeners();
-      return RouteModels;
+    chargeRoute = false;
+
+    return routes;
   }
 }
